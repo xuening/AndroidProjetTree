@@ -10,19 +10,21 @@
         <activity
             android:name=".MyActivity"
             android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".CreationActivity"
+            android:label="@string/title_activity_creation" >
+
+        </activity>
+        <activity
+            android:name=".AccueilActivity"
+            android:label="@string/title_activity_accueil" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".CreationActivity"
-            android:label="@string/title_activity_creation" >
-        </activity>
-        <activity
-            android:name=".AccueilActivity"
-            android:label="@string/title_activity_accueil" >
         </activity>
         <activity
             android:name=".ProblemeActivity"
