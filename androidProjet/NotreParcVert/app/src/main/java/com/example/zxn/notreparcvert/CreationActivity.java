@@ -10,22 +10,44 @@ public class CreationActivity extends ActionBarActivity {
 
     private Probleme probleme;
     private EditText et_lat, et_lon, loca_exa, des;
+    private BD bd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation);
-
+        probleme = new Probleme();
         et_lat = (EditText) findViewById(R.id.et_lat);
         et_lon = (EditText) findViewById(R.id.et_lon);
         loca_exa = (EditText) findViewById(R.id.loca_exa);
         des = (EditText) findViewById(R.id.des);
 
+        bd = new BD(this);
+
 
     }
 
     public void save(View view) {
-        
-    }
 
+        /*
+        personne.setNom(nom.getText().toString());
+        personne.setPrenom(prenom.getText().toString());
+        personne.setAge(Integer.parseInt(age.getText().toString()));*/
+
+
+        probleme.setDescription("this is a problem");
+        probleme.setLatitude(12);
+        probleme.setLongitude(12);
+        probleme.setType("good");
+        probleme.setLoc_exacte("sdsd");
+
+        bd.ajouter(probleme);
+
+        finish();
+    }
+    protected void onDestroy() {
+        bd.fermeture();
+        super.onDestroy();
+    }
 }
