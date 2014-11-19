@@ -25,6 +25,7 @@ public class CreationActivity extends ActionBarActivity {
 
 
     }
+<<<<<<< Updated upstream
 
 
     @Override
@@ -49,4 +50,6 @@ public class CreationActivity extends ActionBarActivity {
     public void save(View view){
 
     }
+=======
+>>>>>>> Stashed changes
 }
