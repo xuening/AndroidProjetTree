@@ -108,7 +108,7 @@ public class BD extends SQLiteOpenHelper {
 
         ArrayList<Probleme> liste_type1 = new ArrayList<Probleme>();
         String[] type1 = new String[]{"Arbre a tailler"};
-        // on renvoie toute la table "Problemels", tri�e par nom+pr�nom
+        // on renvoie toute la table "Problemes", tri�e par nom+pr�nom
         Cursor curseur = bd.query("Problemes", null, "type=?", type1, null, null, "id",null);
 
         if (curseur.getCount() == 0)
@@ -129,7 +129,7 @@ public class BD extends SQLiteOpenHelper {
 
         ArrayList<Probleme> liste_type2 = new ArrayList<Probleme>();
         String[] type2 = new String[]{"Arbre a abattre"};
-        // on renvoie toute la table "Problemels", tri�e par nom+pr�nom
+        // on renvoie toute la table "Problemes", tri�e par nom+pr�nom
         Cursor curseur = bd.query("Problemes", null, "type=?", type2, null, null, "id",null);
 
         if (curseur.getCount() == 0)
@@ -151,8 +151,8 @@ public class BD extends SQLiteOpenHelper {
 
         ArrayList<Probleme> liste_type3 = new ArrayList<Probleme>();
         String[] type3 = new String[]{"Detritus"};
-        // on renvoie toute la table "Problemels", tri�e par nom+pr�nom
-        Cursor curseur = bd.query("Problemels", null, "type=?", type3, null, null, "id",null);
+        // on renvoie toute la table "Problemes", tri�e par nom+pr�nom
+        Cursor curseur = bd.query("Problemes", null, "type=?", type3, null, null, "id",null);
 
         if (curseur.getCount() == 0)
             return liste_type3;
@@ -173,8 +173,8 @@ public class BD extends SQLiteOpenHelper {
 
         ArrayList<Probleme> liste_type4 = new ArrayList<Probleme>();
         String[] type4 = new String[]{"Haie a tailler"};
-        // on renvoie toute la table "Problemels", tri�e par nom+pr�nom
-        Cursor curseur = bd.query("Problemels", null, "type=?", type4, null, null, "id",null);
+        // on renvoie toute la table "Problemes", tri�e par nom+pr�nom
+        Cursor curseur = bd.query("Problemes", null, "type=?", type4, null, null, "id",null);
 
         if (curseur.getCount() == 0)
             return liste_type4;
@@ -195,8 +195,8 @@ public class BD extends SQLiteOpenHelper {
 
         ArrayList<Probleme> liste_type5 = new ArrayList<Probleme>();
         String[] type5 = new String[]{"Mauvaise herbe"};
-        // on renvoie toute la table "Problemels", tri�e par nom+pr�nom
-        Cursor curseur = bd.query("Problemels", null, "type=?", type5, null, null, "id",null);
+        // on renvoie toute la table "Problemes", tri�e par nom+pr�nom
+        Cursor curseur = bd.query("Problemes", null, "type=?", type5, null, null, "id",null);
 
         if (curseur.getCount() == 0)
             return liste_type5;
@@ -217,8 +217,8 @@ public class BD extends SQLiteOpenHelper {
 
         ArrayList<Probleme> liste_type6 = new ArrayList<Probleme>();
         String[] type6 = new String[]{"Autre"};
-        // on renvoie toute la table "Problemels", tri�e par nom+pr�nom
-        Cursor curseur = bd.query("Problemels", null, "type=?", type6, null, null, "id",null);
+        // on renvoie toute la table "Problemes", tri�e par nom+pr�nom
+        Cursor curseur = bd.query("Problemes", null, "type=?", type6, null, null, "id",null);
 
         if (curseur.getCount() == 0)
             return liste_type6;
