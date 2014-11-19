@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -43,9 +44,26 @@ public class AccueilActivity extends ActionBarActivity {
         final StableArrayAdapter adapter = new StableArrayAdapter(this,
                 android.R.layout.simple_list_item_1, list);
         listView.setAdapter(adapter);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, long id) {
+                Probleme probleme = problemes.get(position);
+                start_probleme_activity(probleme);
+
+            }
+
+        });
     }
 
-
+    public void start_probleme_activity(Probleme probleme){
+        Intent intention = new Intent(this,ProblemeActivity.class );
+        intention.putExtra("id", probleme.getId());
+        startActivity(intention);
+    }
 
     public void create_new_problem(View view) {
         startActivity(new Intent(this, CreationActivity.class));
