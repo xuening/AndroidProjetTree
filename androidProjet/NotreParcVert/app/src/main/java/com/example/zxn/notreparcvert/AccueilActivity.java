@@ -5,13 +5,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 
 public class AccueilActivity extends ActionBarActivity {
+
+    private BD bd;
+    private ArrayList<Probleme> problemes = new ArrayList<Probleme>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
+
+        bd = new BD(this);
+
+        
     }
 
 
