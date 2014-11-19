@@ -24,7 +24,8 @@ public class AccueilActivity extends ActionBarActivity {
                 Intent intent = new Intent();
                 intent.setClass(AccueilActivity.this, CreationActivity.class);
                 startActivity(intent);
-                finish();// stop the activity current
+                finish();  // stop the activity current
             }
+        });
     }
 }
