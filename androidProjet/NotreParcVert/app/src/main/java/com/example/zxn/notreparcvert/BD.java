@@ -19,13 +19,12 @@ public class BD extends SQLiteOpenHelper {
         bd = getWritableDatabase();
     }
 
-    // � garder pour les deux versions
+    //
     public BD(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-    // ces deux fonctions (onCreate et onUpgrade) sont � garder absolument ici
-    // (h�ritage de SQLiteOpenHelper)
+    // create the table of problems
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Problemes ("
@@ -44,10 +43,7 @@ public class BD extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Version 1 : sans DAO
-    // Ce code deviendra inutile quand on le d�placera dans BD_DAO (pour la
-    // version 2)
-    //
+    // without DAO
 
     public void fermeture() {
         bd.close();
@@ -63,6 +59,7 @@ public class BD extends SQLiteOpenHelper {
         valeurs.put("loc_exacte", Probleme.getLoc_exacte());
         valeurs.put("description", Probleme.getDescription());
 
+        //insertion of valeur into the table
         return bd.insert("Problemes", null, valeurs);
     }
 
@@ -104,6 +101,9 @@ public class BD extends SQLiteOpenHelper {
 
         return liste_type1;
     }
+
+    // get the list of problems by different type
+
     public ArrayList<Probleme> getProblemesDeType1() {
 
         ArrayList<Probleme> liste_type1 = new ArrayList<Probleme>();

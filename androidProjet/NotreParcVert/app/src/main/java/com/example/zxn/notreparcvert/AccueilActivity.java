@@ -28,7 +28,7 @@ public class AccueilActivity extends ActionBarActivity {
 
 
 
-
+    // change current activity to creationActivity
     public void create_new_problem(View view) {
         startActivity(new Intent(this, CreationActivity.class));
 
