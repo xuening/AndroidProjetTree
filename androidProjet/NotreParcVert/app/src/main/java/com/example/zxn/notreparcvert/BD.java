@@ -3,19 +3,19 @@ package com.example.zxn.notreparcvert;
 /**
  * Created by xuening on 14/11/19.
  */
-import java.util.ArrayList;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class BD extends SQLiteOpenHelper {
     private SQLiteDatabase bd;
 
     public BD(Context ctx) {
-        super(ctx, "Problemels.bd", null, 1);
+        super(ctx, "Problemes.bd", null, 1);
         bd = getWritableDatabase();
     }
 
@@ -31,8 +31,8 @@ public class BD extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE Problemes ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "type TEXT NOT NULL,"
-                + "latitude FLOAT NOT NULL"
-                + "longitude FLOAT NOT NULL"
+                + "latitude FLOAT NOT NULL,"
+                + "longitude FLOAT NOT NULL,"
                 + "loc_exacte TEXT NOT NULL,"
                 + "description TEXT NOT NULL);");
     }
@@ -84,7 +84,26 @@ public class BD extends SQLiteOpenHelper {
 
         return curseurToProbleme(curseur);
     }
+    public ArrayList<Probleme> getProblems(){
+        ArrayList<Probleme> liste_type1 = new ArrayList<Probleme>();
+        String[] type1 = new String[]{"Arbre a tailler"};
+        // on renvoie toute la table "Problemels", tri�e par nom+pr�nom
+        Cursor curseur = bd.query("Problemes", null, null, null, null, null, "id",null);
 
+        if (curseur.getCount() == 0)
+            return liste_type1;
+
+        // on parcourt le r�sultat de la requ�te et on le transforme en un
+        // tableau qu'on renvoie � la ListeView
+        curseur.moveToFirst();
+        do {
+            liste_type1.add(curseurToProbleme(curseur));
+        } while (curseur.moveToNext());
+
+        curseur.close();
+
+        return liste_type1;
+    }
     public ArrayList<Probleme> getProblemesDeType1() {
 
         ArrayList<Probleme> liste_type1 = new ArrayList<Probleme>();
