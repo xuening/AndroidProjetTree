@@ -76,7 +76,9 @@ public class CreationActivity extends ActionBarActivity {
         probleme.setDescription(des.getText().toString());
         probleme.setLatitude(Float.parseFloat(et_lat.getText().toString()));
         probleme.setLongitude(Float.parseFloat(et_lon.getText().toString()));
+
         probleme.setType(spinner_type.getSelectedItem().toString());
+
         probleme.setLoc_exacte(loca_exa.getText().toString());
 
         bd.ajouter(probleme);
