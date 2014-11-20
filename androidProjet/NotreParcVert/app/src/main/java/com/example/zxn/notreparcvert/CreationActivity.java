@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 
 public class CreationActivity extends ActionBarActivity {
 
     private Probleme probleme;
     private EditText et_lat, et_lon, loca_exa, des;
+    private Spinner spinner1;
     private BD bd;
 
 
@@ -48,11 +50,11 @@ public class CreationActivity extends ActionBarActivity {
         personne.setAge(Integer.parseInt(age.getText().toString()));*/
 
 
-        probleme.setDescription("this is a problem");
-        probleme.setLatitude(12);
-        probleme.setLongitude(12);
-        probleme.setType("good");
-        probleme.setLoc_exacte("sdsd");
+        probleme.setDescription(des.getText().toString());
+        probleme.setLatitude(Float.parseFloat(et_lat.getText().toString()));
+        probleme.setLongitude(Float.parseFloat(et_lon.getText().toString()));
+        probleme.setType(spinner1.getSelectedItem().toString());
+        probleme.setLoc_exacte(loca_exa.getText().toString());
 
         bd.ajouter(probleme);
 
