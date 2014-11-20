@@ -146,7 +146,8 @@
             android:id="@+id/btn_map"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_map" />
+            android:text="@string/btn_map"
+            android:onClick="affichier_sur_une_carte"/>
 
     </LinearLayout>
 </LinearLayout>

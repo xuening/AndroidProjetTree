@@ -1,5 +1,7 @@
 package com.example.zxn.notreparcvert;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -61,6 +63,8 @@ public class ProblemeActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
     public void supprimer(View vue) {
         // version 1 : sans DAO
         bd.supprimer(probleme.getId());
@@ -68,6 +72,22 @@ public class ProblemeActivity extends ActionBarActivity {
         //bd.supprimer(personne);
 
         finish();
+    }
+
+    public void start_affichier(Probleme probleme){
+        Intent intention = new Intent(this,MapActivity.class );
+        intention.putExtra("lat", probleme.getLatitude());
+        intention.putExtra("lon", probleme.getLongitude());
+        startActivity(intention);
+    }
+
+    public void affichier_sur_une_carte(View view) {
+       /* String sUrl = "https://www.google.fr/maps/place/Université+de+Lille+1,+59650+Villeneuve‐ d'Ascq/@" + probleme.getLatitude() + "," + probleme.getLongitude() + ",20z";
+        Intent intent = new Intent();
+        intent.setData(Uri.parse(sUrl));
+        intent.setAction(Intent.ACTION_VIEW);
+        startActivity(intent);*/
+        startActivity(new Intent(this, MapActivity.class));
     }
     protected void onDestroy() {
         bd.fermeture();

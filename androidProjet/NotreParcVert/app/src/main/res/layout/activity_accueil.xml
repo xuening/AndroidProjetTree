@@ -23,7 +23,8 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/title"
         android:layout_above="@+id/btn_cre"
-        android:layout_centerHorizontal="true" >
+        android:layout_centerHorizontal="true"
+        android:background="@color/green">
     </ListView>
 
     <Button
