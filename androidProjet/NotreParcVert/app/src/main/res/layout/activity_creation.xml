@@ -10,8 +10,10 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
-    <TextView
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
+
+        <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,16 +21,7 @@
         android:layout_gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_cre"
-
-        android:layout_gravity="center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -46,7 +39,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
@@ -102,10 +95,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
@@ -120,9 +109,7 @@
             android:layout_weight="1"
             android:ems="10" />
 
-    </LinearLayout>
-
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -154,5 +141,7 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/btn_val"
         android:onClick="save"/>
-</LinearLayout>
+
+    </LinearLayout>
+
 </RelativeLayout>

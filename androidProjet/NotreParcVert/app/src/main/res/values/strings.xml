@@ -11,7 +11,8 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="green">#00ffaa</color>
+    <color name="red">#eaadea</color>
+    <color name="blue">#adeaea</color>
 
     <string-array name="types">
         <item>Arbre à tailler</item>

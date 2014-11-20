@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -77,10 +78,13 @@ public class ProblemeActivity extends ActionBarActivity {
         finish();
     }
 
-    public void start_affichier(EditText et_lat,EditText et_lon){
+    public void start_affichier(View view){
         Intent intention = new Intent(this, MapActivity.class );
-        intention.putExtra("lat", et_lat.getText());
-        intention.putExtra("log", et_lon.getText());
+
+
+        intention.putExtra("lat", et_lat.getText().toString());
+        intention.putExtra("lon", et_lon.getText().toString());
+
         startActivity(intention);
     }
 

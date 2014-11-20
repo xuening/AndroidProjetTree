@@ -2,40 +2,50 @@ package com.example.zxn.notreparcvert;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 
 public class MapActivity extends ActionBarActivity {
     private WebView webView;
     private String lat, lon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         webView = (WebView) findViewById(R.id.webView);
     }
-    protected void onStart(){
+
+    protected void onStart() {
         super.onStart();
 
+
         Bundle donnees = getIntent().getExtras();
-        if(donnees!= null){
-            lat=Float.toString(donnees.getInt("lat"));
-            lon=Float.toString(donnees.getInt("lon"));
+
+        if (donnees != null) {
+            lat = donnees.getString("lat");
+            lon = donnees.getString("lon");
+
+
 
         }
 
-        String sUrl = "https://www.google.fr/maps/place/Université+de+Lille+1,+59650+Villeneuve‐ d'Ascq/@" + lat + "," + lon + ",20z";
+
+
+
+        String sUrl = "http://maps.google.com/maps?q=" + lat + "," + lon;
+
 
         webView.getSettings().setJavaScriptEnabled(true);//setting for js
         webView.getSettings().setBuiltInZoomControls(true);//setting for supporting zoom
         // webView.getSettings().setDefaultFontSize(5);
 
         webView.loadUrl(sUrl);
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 // TODO Auto-generated method stub

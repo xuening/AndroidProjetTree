@@ -1,7 +1,9 @@
 package com.example.zxn.notreparcvert;
 
 import android.content.Context;
+import android.location.Address;
 import android.location.Location;
+import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -10,7 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 
 public class CreationActivity extends ActionBarActivity {
@@ -20,7 +25,6 @@ public class CreationActivity extends ActionBarActivity {
     private Spinner spinner_type;
     private BD bd;
     private ArrayAdapter adapter2;
-    private TextView tv_type;
 
 
     @Override
@@ -53,12 +57,26 @@ public class CreationActivity extends ActionBarActivity {
                 arg0.setVisibility(View.VISIBLE);
             }
         });
+
         // display the location of problem as soon as turned into this page
         LocationManager locMan = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location loc = locMan.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (loc != null) {
             et_lat.setText(Double.toString(loc.getLatitude()));
             et_lon.setText(Double.toString(loc.getLongitude()));
+        }
+
+        //get location exact by the latitude and longitude
+        Geocoder gc = new Geocoder(this.getApplicationContext(), Locale.FRANCE);
+        try {
+            List<Address> locations_exacte = gc.getFromLocation(loc.getLatitude(), loc.getLongitude(), 5);
+            //Address[addressLines=[0:"8B Rue Faidherbe",1:"59260 Lezennes",2:"France"],feature=,admin=null,sub-admin=null,locality=Lezennes,thoroughfare=Rue Faidherbe,postalCode=59260,countryCode=FR,countryName=France,hasLatitude=true,latitude=50.6150342,hasLongitude=true,longitude=3.1145944,phone=null,url=null,extras=null]
+            String location_exa = locations_exacte.get(0).getAddressLine(0) + ", " + locations_exacte.get(0).getAddressLine(1) +", " + locations_exacte.get(0).getAddressLine(2);
+            loca_exa.setText(location_exa);
+            //System.out.println(locations_exacte.get(0).toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         bd = new BD(this);
