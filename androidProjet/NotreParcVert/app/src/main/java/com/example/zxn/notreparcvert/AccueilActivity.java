@@ -46,7 +46,7 @@ public class AccueilActivity extends ActionBarActivity {
         listView.setAdapter(adapter);
 
 
-
+        //listener for listView
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -60,13 +60,14 @@ public class AccueilActivity extends ActionBarActivity {
         });
     }
 
+    // send the arg "id" of problem to problemeActivity
     public void start_probleme_activity(Probleme probleme){
         Intent intention = new Intent(this,ProblemeActivity.class );
         intention.putExtra("id", probleme.getId());
         startActivity(intention);
     }
 
-
+    // when click button creer_un_nouveau_probleme change to new Activity
     public void create_new_problem(View view) {
         startActivity(new Intent(this, CreationActivity.class));
 

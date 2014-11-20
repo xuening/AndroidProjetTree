@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 public class MapActivity extends ActionBarActivity {
     private WebView webView;
+    private String lat, lon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,20 +23,24 @@ public class MapActivity extends ActionBarActivity {
 
         Bundle donnees = getIntent().getExtras();
         if(donnees!= null){
-            probleme = bd.getProbleme(donnees.getInt("lat"));
+            lat=Float.toString(donnees.getInt("lat"));
+            lon=Float.toString(donnees.getInt("lon"));
 
         }
-        webView.getSettings().setJavaScriptEnabled(true);//设置使用够执行JS脚本
-        webView.getSettings().setBuiltInZoomControls(true);//设置使支持缩放
-//      webView.getSettings().setDefaultFontSize(5);
 
-        webView.loadUrl("https://www.google.fr/maps/place/Université+de+Lille+1,+59650+Villeneuve‐ d'Ascq/@50.6100949,3.143439,20z");
+        String sUrl = "https://www.google.fr/maps/place/Université+de+Lille+1,+59650+Villeneuve‐ d'Ascq/@" + lat + "," + lon + ",20z";
+
+        webView.getSettings().setJavaScriptEnabled(true);//setting for js
+        webView.getSettings().setBuiltInZoomControls(true);//setting for supporting zoom
+        // webView.getSettings().setDefaultFontSize(5);
+
+        webView.loadUrl(sUrl);
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 // TODO Auto-generated method stub
-                view.loadUrl(url);// 使用当前WebView处理跳转
-                return true;//true表示此事件在此处被处理，不需要再广播
+                view.loadUrl(url);//
+                return true;//true means this event is done here
             }
         });
     }

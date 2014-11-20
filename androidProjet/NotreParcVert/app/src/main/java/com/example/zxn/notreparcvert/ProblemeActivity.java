@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.Map;
+
 
 public class ProblemeActivity extends ActionBarActivity {
 
@@ -36,7 +38,8 @@ public class ProblemeActivity extends ActionBarActivity {
         super.onStart();
         Bundle donnees = getIntent().getExtras();
         if(donnees!= null){
-            probleme = bd.getProbleme(donnees.getInt("id"));
+            probleme = bd.getProbleme(donnees.getInt("id"));//receive the "id" of which item we click
+            //get all information of the problem
             et_type.setText(probleme.getType());
             et_lat.setText(Float.toString(probleme.getLatitude()));
             et_lon.setText(Float.toString(probleme.getLongitude()));
@@ -74,14 +77,17 @@ public class ProblemeActivity extends ActionBarActivity {
         finish();
     }
 
-    public void start_affichier(Probleme probleme){
-        Intent intention = new Intent(this,MapActivity.class );
-        intention.putExtra("lat", probleme.getLatitude());
-        intention.putExtra("lon", probleme.getLongitude());
+    public void start_affichier(EditText et_lat,EditText et_lon){
+        Intent intention = new Intent(this, MapActivity.class );
+        intention.putExtra("lat", et_lat.getText());
+        intention.putExtra("log", et_lon.getText());
         startActivity(intention);
     }
 
     public void affichier_sur_une_carte(View view) {
+       // Uri uri = Uri.parse("geo:38.899533,-77.036476");
+       // Intent it = new Intent(Intent.Action_VIEW,uri);
+       // startActivity(it);
        /* String sUrl = "https://www.google.fr/maps/place/Université+de+Lille+1,+59650+Villeneuve‐ d'Ascq/@" + probleme.getLatitude() + "," + probleme.getLongitude() + ",20z";
         Intent intent = new Intent();
         intent.setData(Uri.parse(sUrl));
