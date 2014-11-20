@@ -39,22 +39,22 @@ public class CreationActivity extends ActionBarActivity {
         //add adapter2 to spinner
         spinner_type.setAdapter(adapter2);
         //add event listener
-        spinner_type.setOnItemSelectedListener(new SpinnerXMLSelectedListener());
+        //spinner_type.setOnItemSelectedListener(new SpinnerXMLSelectedListener());
 
         //set the value init
         spinner_type.setVisibility(View.VISIBLE);
-
-        /*class SpinnerXMLSelectedListener implements AdapterView.OnItemSelectedListener {
-            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-                                       long arg3) {
-                tv_type.setText("Type：" + adapter2.getItem(arg2));
+        spinner_type.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                // TODO Auto-generated method stub
+                tv_type.setText("Type："+ adapter2.getItem(arg2));
+                arg0.setVisibility(View.VISIBLE);
             }
-
             public void onNothingSelected(AdapterView<?> arg0) {
-
+                // TODO Auto-generated method stub
+                tv_type.setText("NONE");
+                arg0.setVisibility(View.VISIBLE);
             }
-
-        }*/
+        });
         // display the location of problem as soon as turned into this page
         LocationManager locMan = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location loc = locMan.getLastKnownLocation(LocationManager.GPS_PROVIDER);
