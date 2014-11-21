@@ -70,14 +70,11 @@ public class ProblemeActivity extends ActionBarActivity {
 
 
     public void supprimer(View vue) {
-        // version 1 : sans DAO
         bd.supprimer(probleme.getId());
-        // version 2 : avec DAO
-        //bd.supprimer(personne);
-
         finish();
     }
 
+    //send latitude and longitude to page mapView
     public void start_affichier(View view){
         Intent intention = new Intent(this, MapActivity.class );
 
@@ -88,15 +85,8 @@ public class ProblemeActivity extends ActionBarActivity {
         startActivity(intention);
     }
 
+    //turn to page mapView
     public void affichier_sur_une_carte(View view) {
-       // Uri uri = Uri.parse("geo:38.899533,-77.036476");
-       // Intent it = new Intent(Intent.Action_VIEW,uri);
-       // startActivity(it);
-       /* String sUrl = "https://www.google.fr/maps/place/Université+de+Lille+1,+59650+Villeneuve‐ d'Ascq/@" + probleme.getLatitude() + "," + probleme.getLongitude() + ",20z";
-        Intent intent = new Intent();
-        intent.setData(Uri.parse(sUrl));
-        intent.setAction(Intent.ACTION_VIEW);
-        startActivity(intent);*/
         startActivity(new Intent(this, MapActivity.class));
     }
     protected void onDestroy() {

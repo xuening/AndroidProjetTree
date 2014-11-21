@@ -2,7 +2,6 @@ package com.example.zxn.notreparcvert;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
@@ -23,18 +22,13 @@ public class MapActivity extends ActionBarActivity {
     protected void onStart() {
         super.onStart();
 
-
+        // get value of lati and longi
         Bundle donnees = getIntent().getExtras();
 
         if (donnees != null) {
             lat = donnees.getString("lat");
             lon = donnees.getString("lon");
-
-
-
         }
-
-
 
 
         String sUrl = "http://maps.google.com/maps?q=" + lat + "," + lon;

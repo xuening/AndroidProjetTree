@@ -1,11 +1,14 @@
 package com.example.zxn.notreparcvert;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.location.Address;
 import android.location.Location;
 import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.renderscript.Script;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -89,17 +92,24 @@ public class CreationActivity extends ActionBarActivity {
     public void save(View view) {
 
         // get the value of all items
-        probleme.setDescription(des.getText().toString());
-        probleme.setLatitude(Float.parseFloat(et_lat.getText().toString()));
-        probleme.setLongitude(Float.parseFloat(et_lon.getText().toString()));
+        // make sure that the description has been written
+        if(des.getText().toString().length()==0){
+            // alert un dialog of error
+            new AlertDialog.Builder(CreationActivity.this).setTitle("Info:").setMessage("Il faut ajouter la description").setPositiveButton("Quitter",null).show();
+        }
+        else {
+            probleme.setDescription(des.getText().toString());
+            probleme.setLatitude(Float.parseFloat(et_lat.getText().toString()));
+            probleme.setLongitude(Float.parseFloat(et_lon.getText().toString()));
 
-        probleme.setType(spinner_type.getSelectedItem().toString());
+            probleme.setType(spinner_type.getSelectedItem().toString());
 
-        probleme.setLoc_exacte(loca_exa.getText().toString());
+            probleme.setLoc_exacte(loca_exa.getText().toString());
 
-        bd.ajouter(probleme);
+            bd.ajouter(probleme);
 
-        finish();
+            finish();
+        }
     }
     protected void onDestroy() {
         bd.fermeture();

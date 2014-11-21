@@ -38,7 +38,7 @@ public class AccueilActivity extends ActionBarActivity {
 
         final ArrayList<String> list = new ArrayList<String>();
         for(Probleme per : problemes){
-            list.add(per.getDescription());
+            list.add(per.getDescription());// the problem list is displayed by description.
         }
 
         final StableArrayAdapter adapter = new StableArrayAdapter(this,
@@ -46,7 +46,7 @@ public class AccueilActivity extends ActionBarActivity {
         listView.setAdapter(adapter);
 
 
-        //listener for listView
+        //listener for listView click
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
